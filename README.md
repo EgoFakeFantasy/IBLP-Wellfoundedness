@@ -13,6 +13,8 @@
 
 最终完整复核覆盖 433 个项目模块、5037 个声明（180 个私有声明）、3846 个定理及 436 份源码哈希。主定理、所有可达图案的可访问性与无穷分支排除已通过内核检查；公理依赖只有 `propext`、`Classical.choice`、`Quot.sound`。完整证据归档为 `verification/stage9-final-*`。
 
+首次完整验收归档保持原样；维护后的当前源码哈希与最近复核结果见 [当前验证记录](verification/current-result.json)，`scripts/check_sources.py` 使用这份记录逐字节核对源码。
+
 | 模块 | 已证明或实现的内容 |
 |---|---|
 | `IBLP/Syntax.lean` | 原始行与模式、p/e/q、普通行型、proper 标记、饱和性；根的基本合法性、行型、空标记与饱和性 |

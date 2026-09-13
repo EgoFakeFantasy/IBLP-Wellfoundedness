@@ -92,7 +92,8 @@ noncomputable example (stage : IBLP.ModelStage.{u}) {n : Nat} (phi : RankPredica
 #print axioms IBLP.ModelStage.replacement_exists
 #print axioms IBLP.FormulaChoiceFunction.value_realizes
 
--- 主良基定理尚未构造；这里只检查目标定义存在，不声称它已有证明。
+-- 主良基定理已由 i3_wellFoundedAtRoot 证明；文件末尾独立检查其展开类型和公理依赖。
+#check IBLP.i3_wellFoundedAtRoot
 #check IBLP.I3WellFoundedStatement
 
 -- 内部有界作用、实际限制及普通初等复合。

@@ -1,5 +1,6 @@
 .lake/
 verification/*
+!verification/current-result.json
 !verification/stage9-final-result.json
 !verification/stage9-final-build.log
 !verification/stage9-final-milestones.log

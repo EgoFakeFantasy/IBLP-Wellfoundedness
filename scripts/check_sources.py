@@ -5,7 +5,7 @@ import pathlib
 import re
 
 root = pathlib.Path(__file__).resolve().parents[1]
-record = json.loads((root / "verification/stage9-final-result.json").read_text(encoding="utf-8-sig"))
+record = json.loads((root / "verification/current-result.json").read_text(encoding="utf-8-sig"))
 expected = {entry["path"].replace("\\", "/"): entry["sha256"].lower() for entry in record["sourceFiles"]}
 actual = {p.relative_to(root).as_posix() for p in (root / "IBLP").rglob("*.lean")}
 actual |= {"IBLP.lean", "CheckMilestones.lean", "Audit.lean"}
