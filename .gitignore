@@ -1,0 +1,12 @@
+.lake/
+verification/*
+!verification/stage9-final-result.json
+!verification/stage9-final-build.log
+!verification/stage9-final-milestones.log
+!verification/stage9-final-audit.log
+!verification/release-provenance.json
+__pycache__/
+PROGRESS_CONTINUOUS.md
+HANDOFF_50_PERCENT.zh.md
+STAGE_*.md
+.publication/

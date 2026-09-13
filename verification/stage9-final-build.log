@@ -1,0 +1,202 @@
+⚠ [1129/1928] Replayed FullMarkedBLP.CompletionSourceBounds
+warning: FullMarkedBLP/CompletionSourceBounds.lean:70:27: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [1256/1928] Replayed IBLP.NativeStrongShape
+warning: IBLP/NativeStrongShape.lean:65:13: This simp argument is unused:
+  Bool.true_eq
+
+Hint: Omit it from the simp argument list.
+  simp only [B̵o̵o̵l̵.̵t̵r̵u̵e̵_̵e̵q̵,̵ ̵if_true] at lowerStepEq
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [1314/1928] Replayed FullMarkedBLP.RankGraphFormula
+warning: FullMarkedBLP/RankGraphFormula.lean:30:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [1316/1928] Replayed FullMarkedBLP.RankFunctionFormula
+warning: FullMarkedBLP/RankFunctionFormula.lean:34:79: This simp argument is unused:
+  BoundedFormula.realize_imp
+
+Hint: Omit it from the simp argument list.
+  simp [Formula.Realize, rankFunctionTotalFormula, BoundedFormula.realize_all, ̵B̵o̵u̵n̵d̵e̵d̵F̵o̵r̵m̵u̵l̵a̵.̵r̵e̵a̵l̵i̵z̵e̵_̵i̵m̵p̵,̵
+      BoundedFormula.realize_ex, BoundedFormula.realize_inf, BoundedFormula.Realize,
+      rankMemAt_realize, rankGraphAppliesAt_realize, rankIsFunction, Fin.snoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: FullMarkedBLP/RankFunctionFormula.lean:35:4: This simp argument is unused:
+  BoundedFormula.realize_ex
+
+Hint: Omit it from the simp argument list.
+  simp [Formula.Realize, rankFunctionTotalFormula, BoundedFormula.realize_all, ̵B̵o̵u̵n̵d̵e̵d̵F̵o̵r̵m̵u̵l̵a̵.̵r̵e̵a̵l̵i̵z̵e̵_̵i̵m̵p̵,̵
+      BoundedFormula.realize_e̵x̵i̲m̲p̲, BoundedFormula.realize_inf, BoundedFormula.Realize,
+      rankMemAt_realize, rankGraphAppliesAt_realize, rankIsFunction, Fin.snoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: FullMarkedBLP/RankFunctionFormula.lean:35:31: This simp argument is unused:
+  BoundedFormula.realize_inf
+
+Hint: Omit it from the simp argument list.
+  simp [Formula.Realize, rankFunctionTotalFormula, BoundedFormula.realize_all, ̵B̵o̵u̵n̵d̵e̵d̵F̵o̵r̵m̵u̵l̵a̵.̵r̵e̵a̵l̵i̵z̵e̵_̵i̵m̵p̵,̵
+      BoundedFormula.realize_e̵x̵i̲m̲p̲, BoundedFormula.realize_i̵n̵f̵e̲x̲, BoundedFormula.Realize,
+      rankMemAt_realize, rankGraphAppliesAt_realize, rankIsFunction, Fin.snoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [1399/1928] Replayed FullMarkedBLP.CompletionSemanticIntervals
+warning: FullMarkedBLP/CompletionSemanticIntervals.lean:71:26: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: FullMarkedBLP/CompletionSemanticIntervals.lean:71:58: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: FullMarkedBLP/CompletionSemanticIntervals.lean:71:70: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: FullMarkedBLP/CompletionSemanticIntervals.lean:72:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: FullMarkedBLP/CompletionSemanticIntervals.lean:72:57: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: FullMarkedBLP/CompletionSemanticIntervals.lean:72:69: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: FullMarkedBLP/CompletionSemanticIntervals.lean:75:26: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: FullMarkedBLP/CompletionSemanticIntervals.lean:75:58: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: FullMarkedBLP/CompletionSemanticIntervals.lean:75:70: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: FullMarkedBLP/CompletionSemanticIntervals.lean:76:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: FullMarkedBLP/CompletionSemanticIntervals.lean:76:57: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: FullMarkedBLP/CompletionSemanticIntervals.lean:76:69: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [1413/1928] Replayed FullMarkedBLP.FrozenEligibility
+warning: FullMarkedBLP/FrozenEligibility.lean:14:66: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [1802/1928] Replayed IBLP.NativeEndpoints
+warning: IBLP/NativeEndpoints.lean:10:70: This simp argument is unused:
+  Bind.bind
+
+Hint: Omit it from the simp argument list.
+  simp [encode, List.getElem?_map, entry, B̵i̵n̵d̵.̵b̵i̵n̵d̵,̵ ̵Option.bind]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: IBLP/NativeEndpoints.lean:14:70: This simp argument is unused:
+  Bind.bind
+
+Hint: Omit it from the simp argument list.
+  simp [encode, List.getElem?_map, entry, B̵i̵n̵d̵.̵b̵i̵n̵d̵,̵ ̵Option.bind]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [1818/1928] Replayed IBLP.NativeTraceShift
+warning: IBLP/NativeTraceShift.lean:9:59: This simp argument is unused:
+  Bind.bind
+
+Hint: Omit it from the simp argument list.
+  simp [FullMarkedBLP.predecessor, IBLP.predecessor, hr, B̵i̵n̵d̵.̵b̵i̵n̵d̵,̵ ̵Option.bind]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [1830/1928] Replayed IBLP.Realization.CompletionIntervals
+warning: IBLP/Realization/CompletionIntervals.lean:93:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: IBLP/Realization/CompletionIntervals.lean:93:61: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: IBLP/Realization/CompletionIntervals.lean:93:73: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: IBLP/Realization/CompletionIntervals.lean:94:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: IBLP/Realization/CompletionIntervals.lean:94:61: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: IBLP/Realization/CompletionIntervals.lean:94:73: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: IBLP/Realization/CompletionIntervals.lean:101:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: IBLP/Realization/CompletionIntervals.lean:101:61: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: IBLP/Realization/CompletionIntervals.lean:101:73: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: IBLP/Realization/CompletionIntervals.lean:102:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: IBLP/Realization/CompletionIntervals.lean:102:61: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: IBLP/Realization/CompletionIntervals.lean:102:73: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [1831/1928] Replayed IBLP.Realization.CompletionEdges
+warning: IBLP/Realization/CompletionEdges.lean:69:79: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: IBLP/Realization/CompletionEdges.lean:69:91: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [1837/1928] Replayed IBLP.Realization.CompletionMarks
+warning: IBLP/Realization/CompletionMarks.lean:103:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: IBLP/Realization/CompletionMarks.lean:103:41: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [1838/1928] Replayed IBLP.Realization.CompletionRealized
+warning: IBLP/Realization/CompletionRealized.lean:47:8: unused variable `C`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [1894/1928] Replayed IBLP.Realization.FrozenEventInduction
+warning: IBLP/Realization/FrozenEventInduction.lean:21:8: unused variable `C`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [1901/1928] Replayed IBLP.Model.UniformGraphOperations
+warning: IBLP/Model/UniformGraphOperations.lean:11:33: unused variable `v`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [1906/1928] Replayed IBLP.Realization.RowDataFormula
+warning: IBLP/Realization/RowDataFormula.lean:114:18: unused variable `i`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: IBLP/Realization/RowDataFormula.lean:115:20: unused variable `i`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: IBLP/Realization/RowDataFormula.lean:115:22: unused variable `j`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [1908/1928] Replayed IBLP.Realization.CompletePayloadFormula
+warning: IBLP/Realization/CompletePayloadFormula.lean:20:74: This simp argument is unused:
+  Function.comp_def
+
+Hint: Omit it from the simp argument list.
+  simp [extendRowVector, valid,̵ ̵F̵u̵n̵c̵t̵i̵o̵n̵.̵c̵o̵m̵p̵_̵d̵e̵f̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [1915/1928] Replayed IBLP.Realization.CopyCompletionPacket
+warning: IBLP/Realization/CopyCompletionPacket.lean:30:6: unused variable `C`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [1923/1928] Replayed IBLP.Realization.MinimalBadTop
+warning: IBLP/Realization/MinimalBadTop.lean:33:4: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+Build completed successfully (1928 jobs).

@@ -1,0 +1,11 @@
+name = "iblpWellfoundedness"
+version = "0.1.0"
+defaultTargets = ["IBLP"]
+
+[[lean_lib]]
+name = "IBLP"
+
+[[require]]
+name = "fullMarkedBLP"
+git = "https://github.com/EgoFakeFantasy/FullMarkedBLP.git"
+rev = "832af28724c9897dfaf56248de662aee7b5a9b79"

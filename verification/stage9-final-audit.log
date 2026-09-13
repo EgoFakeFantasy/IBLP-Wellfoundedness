@@ -1,0 +1,3 @@
+Kernel audit passed: 5037 IBLP constants (including 180 private constants); 3846 theorem constants; axioms: [propext,
+ Quot.sound,
+ Classical.choice]

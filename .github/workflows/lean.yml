@@ -1,0 +1,38 @@
+name: Lean proof verification
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check audited sources and import coverage
+        run: python3 scripts/check_sources.py
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          use-mathlib-cache: true
+      - name: Full build, exact main theorem types, and transitive axiom audit
+        shell: pwsh
+        run: ./verify.ps1
+      - name: Upload verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: proof-verification
+          path: |
+            verification/result.json
+            verification/build.log
+            verification/milestones.log
+            verification/audit.log

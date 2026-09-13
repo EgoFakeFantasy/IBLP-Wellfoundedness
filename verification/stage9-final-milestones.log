@@ -1,0 +1,381 @@
+'IBLP.exists_root_graphs_of_i3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.scan_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.traceFrom_iff' depends on axioms: [propext, Quot.sound]
+'IBLP.weakAction_restriction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.nativeSources_total' depends on axioms: [propext, Classical.choice, Quot.sound]
+IBLP.weakAction_cut_commute.{u} {alpha beta : Ordinal.{u}} (ha : Order.IsSuccLimit alpha)
+  (k : IBLP.BoundedMap alpha beta) (eta : Ordinal.{u}) (z : ZFSet.{u}) :
+  IBLP.weakAction k ↑(IBLP.truncate eta z) = ↑(IBLP.truncate (IBLP.rho k eta) (IBLP.weakAction k z))
+IBLP.boundedCutAction_restriction.{u} {alpha beta delta epsilon : Ordinal.{u}} (ha : Order.IsSuccLimit alpha)
+  (hd : Order.IsSuccLimit delta) (k : IBLP.BoundedMap alpha beta) (small : IBLP.BoundedMap delta epsilon)
+  (h : delta ≤ alpha) (agree : ∀ (x : RankDomain (Order.succ delta)), ↑(small x) = ↑(k (IBLP.rankInclude ⋯ x))) :
+  IBLP.CutRestriction (IBLP.boundedCutAction hd small) (IBLP.boundedCutAction ha k)
+IBLP.CutRestriction.word_bound_prefix_min.{u, v} {S : Type v} {C : IBLP.CutSpace S} {F F' : IBLP.CutAction C}
+  (hf : IBLP.CutRestriction F' F) {tail' tail : List (IBLP.CutAction C)}
+  (ht : List.Forall₂ IBLP.CutRestriction tail' tail) :
+  (F'.word tail').bound =
+    IBLP.minimumBounds F'.bound (F.outerRestrictionBounds (tail.zip (List.map IBLP.CutAction.bound tail')))
+IBLP.CutAction.weakAgreement_iff_allInputs.{u, v} {S : Type v} {C : IBLP.CutSpace S} {F G : IBLP.CutAction C}
+  {delta : Ordinal.{u}} (hd : Order.IsSuccLimit delta) : F.WeakAgreement G delta ↔ F.AllInputAgreement G delta
+IBLP.CutAction.WeakAgreement.reads_edge.{u, v} {S : Type v} {C : IBLP.CutSpace S} (O : IBLP.OrdinalView C)
+  {F G : IBLP.CutAction C} {delta target : Ordinal.{u}} (hd : Order.IsSuccLimit delta) (h : F.WeakAgreement G delta)
+  (z : S) (hf : F.act z = O.elem target) (hg : ∃ b, G.act z = O.elem b) (ht : target < delta) : G.act z = O.elem target
+'IBLP.CutRestriction.word_bound_prefix_min' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.CutAction.weakAgreement_iff_allInputs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ModelStage.separation_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ModelStage.ordinalComplete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.collapse_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.collapse_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+IBLP.TransitiveClass.graphElementary_iff_schema.{u} (M : IBLP.TransitiveClass) (graph domain range : M.Element) :
+  M.GraphElementary graph domain range ↔
+    rankFunctionFormula.Realize ![graph, domain, range] ∧
+      ∀ (n : ℕ) (phi : membershipLanguage.Formula (Fin n)),
+        (IBLP.TransitiveClass.graphPreservesFormula phi).Realize ![graph, domain, range]
+IBLP.ModelStage.rankDomainEquiv.{u} (stage : IBLP.ModelStage) (beta : Ordinal.{u}) :
+  membershipLanguage.Equiv (stage.model.RankElement beta) (IBLP.SetDomain ↑(stage.hierarchy beta))
+IBLP.ModelStage.InternalGraphElementary.graph_exact.{u} {stage : IBLP.ModelStage} {alpha beta : Ordinal.{u}}
+  {graph : stage.model.Element} (h : stage.InternalGraphElementary alpha beta graph) (a b : ZFSet.{u}) :
+  a.pair b ∈ ↑graph ↔ ∃ x, ↑x = a ∧ ↑(h.toRankEmbedding x) = b
+'IBLP.ModelStage.hierarchy_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ModelStage.hierarchyGraph_rank_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ModelStage.internalGraphElementary_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ModelStage.replacement_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FormulaChoiceFunction.value_realizes' depends on axioms: [propext, Classical.choice, Quot.sound]
+IBLP.I3WellFoundedStatement.{u} : Prop
+IBLP.FiniteTraceRows.toInternalTraceRows.{u} {stage : IBLP.ModelStage} {a : IBLP.Pattern}
+  {theta : Fin (List.length a + 2) → Ordinal.{u}} (R : IBLP.FiniteTraceRows stage a theta) :
+  IBLP.InternalTraceRows stage a (IBLP.finiteThetaExtension theta)
+IBLP.FactorTrace.carrier_bound.{u} {stage : IBLP.ModelStage} {a : IBLP.Pattern} {theta : ℕ → Ordinal.{u}}
+  (R : IBLP.InternalTraceRows stage a theta) {target start : ℕ} {rows : List ℕ}
+  (h : IBLP.FactorTrace a target start rows) {carrier : ℕ}
+  (increasing : StrictMonoOn theta (Set.Iic (List.length a + 1))) (inside : carrier ≤ List.length a)
+  (earlier : start < carrier) :
+  theta start < (IBLP.FactorTrace.word R.actions h).bound ∧
+    (IBLP.FactorTrace.word R.actions h).bound ≤ theta (start + 1) ∧ theta (start + 1) < theta (carrier + 1)
+IBLP.FactorTrace.markCertificate_iff_allInputs.{u} {stage : IBLP.ModelStage} {a : IBLP.Pattern}
+  {theta : ℕ → Ordinal.{u}} (R : IBLP.InternalTraceRows stage a theta) {target start : ℕ} {rows : List ℕ}
+  (h : IBLP.FactorTrace a target start rows) (carrier : ℕ) :
+  IBLP.FactorTrace.MarkCertificate R h carrier ↔
+    (R.actions.action carrier).AllInputAgreement (IBLP.FactorTrace.word R.actions h)
+      (IBLP.FactorTrace.word R.actions h).bound
+IBLP.FactorTrace.markCertificate_reads_predecessor.{u} {stage : IBLP.ModelStage} {a : IBLP.Pattern}
+  {theta : ℕ → Ordinal.{u}} (R : IBLP.InternalTraceRows stage a theta) {target start : ℕ} {rows : List ℕ}
+  (h : IBLP.FactorTrace a target start rows) {carrier : ℕ}
+  (certificate : IBLP.FactorTrace.MarkCertificate R h carrier) :
+  stage.weakAction (R.map carrier) (stage.ordinal (theta target)) = stage.ordinal (theta start)
+IBLP.ModelStage.boundedRestrictionGraph_elementary.{u} (stage : IBLP.ModelStage) {alpha beta : Ordinal.{u}}
+  (ha : Order.IsSuccLimit alpha) (graph : stage.model.Element) (k : stage.BoundedMap alpha beta)
+  (represents : stage.RepresentsBoundedMap graph k) (delta : Ordinal.{u}) (included : delta ≤ alpha) :
+  stage.InternalGraphElementary delta (stage.rho k delta)
+    (stage.boundedRestrictionGraph graph k represents delta included)
+IBLP.exists_initial_root_realization_of_i3.{u} (h : IBLP.I3) :
+  ∃ lambda,
+    ∃ (hl : Order.IsSuccLimit lambda),
+      ∃ theta graphs,
+        IBLP.RootGraphRealization hl theta graphs ∧
+          (∀ (i : ℕ), IBLP.initialStage.model.InternalInaccessible (IBLP.initialStage.ordinal ↑(theta i))) ∧
+            ∀ (r : ℕ) (row : IBLP.Row) (e : ℕ),
+              IBLP.rowAt IBLP.root r = some row →
+                row.e = some e →
+                  IBLP.initialStage.InternalGraphElementary (↑(theta e)) (↑(theta (r + 1)))
+                    (IBLP.initialElement ↑(graphs r))
+'IBLP.ModelStage.boundedCutAction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ModelStage.boundedRestrict_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ModelStage.boundedRestrictionGraph_elementary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ModelStage.boundedMap_endpoint_internalInaccessible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FactorTrace.internal_realization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteTraceRows.toInternalTraceRows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.exists_initial_root_realization_of_i3' depends on axioms: [propext, Classical.choice, Quot.sound]
+IBLP.BoundedRealization.mark_internal_realization.{u} {stage : IBLP.ModelStage} {a : IBLP.Pattern}
+  (R : IBLP.BoundedRealization stage a) {r b : ℕ} {row : IBLP.Row} (hr : IBLP.rowAt a r = some row)
+  (hb : b ∈ row.marks) :
+  ∃ target trace,
+    row.columns[List.idxOf b row.columns - row.step]? = some target ∧
+      IBLP.markTrace a r b = some trace ∧
+        ∃ (h : IBLP.FactorTrace a target b trace.dropLast),
+          ∃ graph,
+            stage.InternalGraphElementary
+                (IBLP.FactorTrace.inputBound R.data.toFiniteTraceRows.toInternalTraceRows.actions h)
+                (IBLP.FactorTrace.word R.data.toFiniteTraceRows.toInternalTraceRows.actions h).bound graph ∧
+              stage.model.InternalInaccessible
+                  (stage.ordinal (IBLP.FactorTrace.word R.data.toFiniteTraceRows.toInternalTraceRows.actions h).bound) ∧
+                (R.data.point target).toZFSet.pair (R.data.point b).toZFSet ∈ ↑graph ∧
+                  (IBLP.FactorTrace.inputBound R.data.toFiniteTraceRows.toInternalTraceRows.actions h).toZFSet.pair
+                        (IBLP.FactorTrace.word R.data.toFiniteTraceRows.toInternalTraceRows.actions h).bound.toZFSet ∈
+                      ↑graph ∧
+                    R.data.point b <
+                        (IBLP.FactorTrace.word R.data.toFiniteTraceRows.toInternalTraceRows.actions h).bound ∧
+                      (IBLP.FactorTrace.word R.data.toFiniteTraceRows.toInternalTraceRows.actions h).bound ≤
+                          R.data.point (b + 1) ∧
+                        R.data.point (b + 1) < R.data.point (r + 1) ∧
+                          IBLP.FactorTrace.MarkCertificate R.data.toFiniteTraceRows.toInternalTraceRows h r
+IBLP.FiniteBoundedData.markRealized_iff_formula.{u} {stage : IBLP.ModelStage} {a : IBLP.Pattern}
+  (D : IBLP.FiniteBoundedData stage a) (r : IBLP.FiniteRowIndex a) (row : IBLP.Row) (b : ℕ) :
+  D.MarkRealized (↑r) row b ↔
+    ∃ target trace,
+      row.columns[List.idxOf b row.columns - row.step]? = some target ∧
+        IBLP.markTrace a (↑r) b = some trace ∧
+          ∃ (h : IBLP.FactorTrace a target b trace.dropLast),
+            IBLP.modelWeakAgreementFormula.Realize (D.markFormulaParameters r h)
+IBLP.modelGraphCriticalPointFormula_realize.{u} (M : IBLP.TransitiveClass) (graph critical : M.Element) :
+  IBLP.modelGraphCriticalPointFormula.Realize ![graph, critical] ↔ M.GraphCriticalPoint graph critical
+IBLP.ModelStage.graphWeakAgreement_image.{u} (source target : IBLP.ModelStage)
+  (j : source.model.ElementaryMap target.model) (f g : source.model.Element) (alpha gamma delta : Ordinal.{u}) :
+  target.model.GraphWeakAgreement (j f) (j g) (target.hierarchy (source.ordinalImage j alpha))
+      (target.hierarchy (source.ordinalImage j gamma)) (target.hierarchy (source.ordinalImage j delta)) ↔
+    source.model.GraphWeakAgreement f g (source.hierarchy alpha) (source.hierarchy gamma) (source.hierarchy delta)
+IBLP.patternSetCode_injective.{u} : Function.Injective IBLP.patternSetCode
+IBLP.ModelStage.patternCode_image.{u} (source target : IBLP.ModelStage) (j : source.model.ElementaryMap target.model)
+  (a : IBLP.Pattern) : j (source.patternCode a) = target.patternCode a
+IBLP.setSatisfactionFormula_realize.{u} (stage : IBLP.ModelStage) (books : Fin 6 → stage.model.Element)
+  (D truth : stage.model.Element) :
+  IBLP.setSatisfactionFormula.Realize (Fin.snoc (Fin.snoc books D) truth) ↔
+    IBLP.SetCodedTruthConditions stage.model books D truth
+'IBLP.exists_bounded_root_of_i3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.mark_internal_realization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.code_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ModelStage.setSatisfaction_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ModelStage.setSatisfaction_formula_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ModelStage.setSatisfaction_formula_exists_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ModelStage.setGraphElementaryFormula_realize' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ModelStage.syntaxBooks_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ModelStage.setSatisfaction_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Derivation.system_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Derivation.measure_ultrafilter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Derivation.measure_preimage_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Derivation.tupleDomain_full_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Derivation.tupleMeasure_ultrafilter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Derivation.extenderSet_test_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Derivation.finite_consistency' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Derivation.witness_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Derivation.holds_ex_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.UltrapowerAt.los_measure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.UltrapowerAt.constantEmbedding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.UltrapowerAt.transitionEmbedding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.UltrapowerAt.transition_comp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.UltrapowerAt.finite_common' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.CommonRefinement.holds_independent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.GlobalTruth.ex_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Ultrapower.los_measure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Ultrapower.componentEmbedding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Ultrapower.constantEmbedding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Ultrapower.extensional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Derivation.countable_directed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Derivation.countable_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Ultrapower.wellFounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Ultrapower.predecessorsSmall' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Ultrapower.collapsedValue_mem_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Ultrapower.embedding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Representative.sequence_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Ultrapower.countablyClosed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Ultrapower.nextStage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Ultrapower.collapsed_seed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Ultrapower.embedding_agrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Ultrapower.embedding_endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Ultrapower.hierarchy_agrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Ultrapower.rankPart_agrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ModelStage.setCollapse_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.LocalCodes.relation_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.LocalCodes.predecessor_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Ultrapower.target_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.Derivation.extend' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.InternalExtension.cut_embedding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.InternalExtension.action_cut_critical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.InternalExtension.retained_elementary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.traceGraph_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.lastExtension' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.copyPoint_increasing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.copyPoint_inaccessible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.copyEntry_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.copyEntry_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.rawCopy_geometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.copyRow_graph_elementary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.copyRow_graph_critical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.copyRow_graph_edges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.retainedRow_copy_elementary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.rawCopyData' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.rawCopyData_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.rawCopy_next_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.rawCopies_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.rawCopyData_graph_old' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.rawCopyData_graph_new' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.rawCopy_factorTrace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.rawCopy_trace_compute' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.fullCopy_trace_from_bottom' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.fullCopy_mark' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ModelStage.InternalGraphElementary.bounds_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.traceGraph_congr_rows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.fullCopy_markCertificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.fullCopy_markRealized' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.TransitiveClass.graphWeakAgreement_absolute' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.markCertificate_absolute' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.rawCopy_markRealized_old' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.InternalExtension.low_image_allInputs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FactorTrace.split_first_below' depends on axioms: [propext, Quot.sound]
+'IBLP.FiniteBoundedData.rawCopy_lowTrace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.rawCopy_highTrace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.keepCopiedMark_high_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.control_mark_trace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.lowCopy_markTrace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.highCopy_markTrace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.InternalExtension.control_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.InternalExtension.high_crossing_allInputs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Extender.InternalExtension.high_crossing_no_front' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.lowCopy_wordAgreement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.lowCopy_markRealized' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.highCopy_markRealized' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.rawCopy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.rawCopy_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.rawCopies_all_realized' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.take' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.cut_realization_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.copies_cut_realization_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.NativeBridge.native_encode' depends on axioms: [propext, Quot.sound]
+'IBLP.native_total' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.nativePoint_increasing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.nativePoint_inaccessible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.nativeFamilyGraph_elementary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.nativeFamilyGraph_critical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.nativeFamilyMap_allInputs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.mark_next_source_covers_input' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.mark_word_image_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.native_preserves_syntax' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.nativeBlock_e' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.nativeFamilyGraph_actual_elementary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.nativeFamilyRowData' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.nativeData' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.nativeData_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.nativeData_graph_family' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.native_prefix_markRealized' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.native_predecessor_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.nativeData_row_restriction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.native_word_restriction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.native_shift_markCertificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.native_suffix_markRealized' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.NativeBridge.top_markPairs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.nativeBlock_markPairs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.native_family_markRealized' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.native' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.native_realization_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.native_total_realized' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Row.CompletionGeometry.shape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Row.CompletionGeometry.all_proper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Row.CompletionGeometry.q_update' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.completion_all_edges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.completionData' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.completion_markCertificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.completion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.completeMark_realization_of_packets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.native_advances_saturation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.scan_saturated_of_history' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanReach.record_birth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanReach.record_predecessor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanReach.record_target_q' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.internalCheck_endpoints' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanReach.parallel_factorTrace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.rawCopies_split' depends on axioms: [propext, Quot.sound]
+'IBLP.FiniteBoundedData.rawCopies_block_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.rawCopies_stage_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.rawCopies_block_origin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.copies_cut_stage_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.lowCopy_bottom' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.highCopy_bottom' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.fullCopy_bottom' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.copied_bottom' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.copied_mark_bottom_origin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.copied_active_factors' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.rawCopies_tail_mark_origin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.rawCopies_block_mark_origin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.copies_cut_block_mark_origin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.copies_cut_block_active_factors' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.rawCopy_block_saturated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.rawCopies_tail_saturated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.copies_cut_block_saturated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanLabeledReach.forget' depends on axioms: [propext, Quot.sound]
+'IBLP.ScanReach.labeled' depends on axioms: [propext, Quot.sound]
+'IBLP.ScanLabeledReach.record_neighbors' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanLabeledReach.record_family_not_old' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanLabeledReach.no_record_before_start' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanLabeledReach.predecessor_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanLabeledReach.factorTrace_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.blockSeed_exit' depends on axioms: [propext, Quot.sound]
+'IBLP.FactorTrace.blockSeed_eq' depends on axioms: [propext, Quot.sound]
+'IBLP.ScanLabeledReach.blockSeed_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FrozenReach.decomposition' depends on axioms: [propext, Quot.sound]
+'IBLP.FrozenReach.invariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanPriorGeometry.priorSyntax' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanPriorGeometry.priorPredecessors' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Row.CompletionGeometry.old_core_pairs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Row.CompletionGeometry.set_markTrace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FrozenReach.markTrace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanLabeledReach.unprocessed_markTrace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanLabeledReach.crossing_completionRecord_none' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FrozenReach.q_origin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FrozenRaisedQ.original_mark' depends on axioms: [propext, Quot.sound]
+'IBLP.native_penultimate_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.native_base_q' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.scan_step_q_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanLabeledReach.unprocessed_rowAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanLabeledReach.processed_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanLabeledReach.processed_q_origin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.NativeWalk.packet' depends on axioms: [propext, Quot.sound]
+'IBLP.ScanReach.frozen_nativeSources_packet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanLabeledReach.record_or_adjacent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanLabeledReach.no_record_endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanLabeledReach.record_of_endpoint_target' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanLabeledReach.factor_records' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanLabeledReach.internalCheck_factor_records' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.copies_scan_completion_factors' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.SeedRecordHistory.same_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.copies_scan_completion_family' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.copies_scan_q_last' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanLabeledReach.native_record_inherits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.copies_scan_record_inherits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.SeedRecordHistory.native_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.copies_scan_seed_history' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.ScanLabeledReach.record_birth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.copies_scan_record_shape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FactorTrace.internal_predecessor' depends on axioms: [propext, Quot.sound]
+'IBLP.BoundedRealization.copies_scan_internal_records' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.copies_scan_completion_records' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.copies_scan_parallel_packet' depends on axioms: [propext, Classical.choice, Quot.sound]
+CheckMilestones.lean:1125:6: warning: unused variable `C`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'IBLP.FrozenReach.column_origin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FrozenReach.proper_mark' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.copies_scan_target_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.completionGeometry_of_packet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FactorTrace.word_restriction_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.FamilyRestrictionHistory.completion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.FamilyRestrictionHistory.native' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.copies_scan_parallel_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.copies_scan_completion_packet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.frozen_realization_from_event_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.copies_frozen_closure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.MarkedRealization.scan_realization_from_frozen_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.copies_cut_cursor_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.copies_scan_realizations' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.copies_scan_syntax_history' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.scan_total_of_history' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.copies_scan_total_realized' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.expand_realization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.expand_total' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Reachable.bounded_realization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Reachable.expand_total' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.UniformDefinable.hierarchy_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.UniformDefinable.rank_graph' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.UniformDefinable.row_data' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.graphWord_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.traceCertificatePayload_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.FiniteBoundedData.markPayload_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.CompletePayload.decode' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.completePayload' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.UniformDefinable.realization_below' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.acc_of_below_reflection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.BoundedRealization.acc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.i3_wellFoundedAtRoot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.i3_wellFoundedStatement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.Reachable.acc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IBLP.i3_no_infinite_branch' depends on axioms: [propext, Classical.choice, Quot.sound]

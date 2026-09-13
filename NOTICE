@@ -1,0 +1,14 @@
+IBLP-Wellfoundedness
+Copyright 2026 EgoFakeFantasy and contributors
+
+This project's original code and documentation are licensed under the
+Apache License, Version 2.0. See LICENSE.
+
+This project incorporates and adapts work from EgoFakeFantasy/FullMarkedBLP,
+licensed under Apache-2.0. The upstream license is preserved in
+third_party/FullMarkedBLP-LICENSE.txt. Original source notices are retained.
+Formula relativization also draws on EgoFakeFantasy/RankElementarity.
+See NOTICE.md and DEPENDENCIES.md for provenance and modifications.
+
+Dependencies retain their respective licenses. The manuscript identified
+by hash in SPEC_LOCK.md is not bundled or relicensed by this repository.
